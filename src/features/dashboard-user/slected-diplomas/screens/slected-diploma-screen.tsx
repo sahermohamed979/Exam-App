@@ -5,7 +5,6 @@ import CardExam from "../components/card-exam";
 import EndList from "@/src/shared/components/ui/end-list";
 import HeaderUserDashboard from "@/src/features/dashboard-user/slected-diplomas/components/header-usre-dashboard";
 import ExamSkeleton from "../skeletons/Exam-Skeleton";
-import { formatSlugName } from "@/src/shared/components/lib/utils";
 
 export default function SlectedDiplomaScreen() {
   const params = useParams();

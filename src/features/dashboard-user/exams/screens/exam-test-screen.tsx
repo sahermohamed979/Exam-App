@@ -128,7 +128,7 @@ export default function ExamTestScreen() {
             </div>
             {step === "exam" && (
               <>
-                {" "}
+                {}
                 <form onSubmit={form.handleSubmit(onSubmit)} className="p-5">
                   {questions && (
                     <div className="flex flex-col gap-4">
