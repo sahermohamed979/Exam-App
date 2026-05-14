@@ -1,0 +1,19 @@
+import "next-auth";
+import "next-auth/jwt";
+import { UserType } from "./user";
+declare module "next-auth" {
+  interface User {
+    user: UserType;
+    token: string;
+  }
+
+  interface Session {
+    user: UserType;
+  }
+}
+declare module "next-auth/jwt" {
+  interface JWT {
+    user: UserType;
+    token: string;
+  }
+}

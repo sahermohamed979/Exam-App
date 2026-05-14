@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 Modern Exam & Diploma Management Platform
 
-## Getting Started
+A robust, full-stack Next.js application built to efficiently manage online exams, diplomas, and users. Featuring sophisticated role-based access control, a rich interactive dashboard, and a comprehensive audit logging system.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+- **Framework:** Next.js (App Router, Server Actions)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **Components:** Radix UI, Shadcn UI
+- **State & Data Fetching:** React Query (@tanstack/react-query)
+- **Form Management:** React Hook Form
+- **Authentication:** NextAuth.js
+- **Icons:** Lucide React
+
+## ✨ Key Features
+
+### 🔐 Advanced Authentication & Authorization
+
+- Complete user registration and login flow.
+- Password management (Forgot/Reset password integrations).
+- Email verification hooks.
+- Secure, role-based routing protecting User vs. Admin dashboards.
+
+### 🛡️ Dashboard & Role Management
+
+- **Admin Dashboard:** Access detailed insights, manage exams, assign diplomas, configure platform settings, and monitor detailed user activity.
+- **User Dashboard:** Personalized hub for users to view assigned diplomas, track progress, manage their profiles, and take specific exams.
+- Utilizes Next.js parallel and intercepted routes (`@admin`, `@user`) for seamless role-based UI separation.
+
+### 📋 Exams & Diplomas Engine
+
+- Create, read, update, and delete diploma programs.
+- Complex exam and questions management module.
+- Support for bulk question uploading and editing.
+- Responsive pagination and skeleton loading states for a better UX.
+
+### 🔍 Audit Logging System
+
+- Comprehensive tracking for admin events and user actions.
+- Actionable logs screen with robust server-side search and filtering features (by Category, Action, User ID, Date).
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── components/          # Reusable UI components (Shadcn, Radix)
+├── public/              # Static assets (fonts, icons, images)
+├── src/
+│   ├── app/             # Next.js App Router (Layouts, API routes, parallel routes)
+│   ├── features/        # Feature-based modular architecture
+│   │   ├── auth/              # Auth screens, forms, APIs, and hooks
+│   │   ├── dashboard-admin/   # Admin specific capabilities (logs, exams management)
+│   │   ├── dashboard-user/    # User specific capabilities
+│   │   └── account-settings/  # Cross-role profile and settings views
+│   └── shared/          # Globally shared types, hooks, context, and constants
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Make sure you have [Node.js](https://nodejs.org/) installed (v18+ recommended) and a package manager such as `npm`, `yarn`, `pnpm`, or `bun`.
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository and navigate into the directory:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   ```bash
+   git clone <repository-url>
+   cd exam
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Install the dependencies:
 
-## Deploy on Vercel
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Set up environment variables:
+   Create a `.env` file in the root of the project and populate it with your configuration (e.g., API URL, NextAuth secrets).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   ```env
+   NEXT_PUBLIC_API_URL=http://your-backend-api.com
+   NEXTAUTH_SECRET=your_super_secret_key
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to explore the app.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are highly appreciated. Feel free to check out the issues page if you want to contribute.
+
+## 📄 License
+
+This project is licensed under the MIT License.
