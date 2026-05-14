@@ -1,3 +1,4 @@
+'use client";'
 import {
   Field,
   FieldError,
@@ -6,14 +7,18 @@ import {
 import { CloudUpload, FileImage, Download, Trash2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Controller, useForm, useFormContext } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
 import { uploadSchema } from "../schema/add-diplomas-schema";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { IUploadData } from "../types/add-diplomas";
 import useUploadImages from "@/src/shared/components/hooks/upload-images-hook";
 import { ProgressBar } from "@/src/shared/components/ui/upload-proggres-bar";
 import Image from "next/image";
 
-export default function UploadForm({initialImage}:{initialImage?:string}) {
+export default function UploadForm({
+  initialImage,
+}: {
+  initialImage?: string;
+}) {
   const { mutate: uploadImages, uploadProgress } = useUploadImages();
 
   const [image, setImage] = useState(initialImage);
@@ -111,9 +116,8 @@ export default function UploadForm({initialImage}:{initialImage?:string}) {
 
                   <div className="flex items-center gap-4 pr-4">
                     <span className="text-base font-mono text-gray-400">
-                      {fileDetails?.size  || "0.00 MB"}
-
-                    </span> 
+                      {fileDetails?.size || "0.00 MB"}
+                    </span>
                     <div className="mx-2 h-6 w-px bg-gray-200" />
                     <button
                       type="button"
