@@ -6,7 +6,7 @@ export const getAuthToken = async () => {
   const cookieStore = await cookies();
   const token = cookieStore.get("next-auth.session-token")?.value;
   try {
-    const jwt = decode({
+    const jwt = await decode({
       token: token,
       secret: process.env.NEXTAUTH_SECRET!,
     });
