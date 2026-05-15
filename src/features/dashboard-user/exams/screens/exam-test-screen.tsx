@@ -32,7 +32,7 @@ export default function ExamTestScreen() {
   const searchParams = useSearchParams();
   const duration = Number(searchParams.get("duration"));
   const [timeLeft] = useState(duration);
-  const { remaining, stop } = useResendTimer(timeLeft);
+  const { remaining, stop, start } = useResendTimer(timeLeft);
   const [step, setStep] = useState<"exam" | "result">("exam");
   const examId = extractId(params.exam as string);
   const { data: questions, isLoading } = useGetExam(examId);
@@ -66,8 +66,12 @@ export default function ExamTestScreen() {
       ...data,
       startedAt,
     };
-    mutation.mutate(finalPayload);
-    stop();
+    mutation.mutate(finalPayload, {
+      onSuccess: () => {
+        stop();
+        sessionStorage.removeItem("exam_timer_expiry");
+      },
+    });
   };
   useEffect(() => {
     if (mutation.isSuccess) {
@@ -225,6 +229,7 @@ export default function ExamTestScreen() {
                         mutation.reset();
                         form.reset();
                         setCurrentQ(0);
+                        start();
                       }}
                       className="px-4 py-3 bg-gray-200 text-gray-700 w-full flex items-center justify-center gap-2"
                     >
