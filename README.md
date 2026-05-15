@@ -1,4 +1,9 @@
+
 # 🎓 Modern Exam & Diploma Management Platform
+
+
+<img width="1536" height="1024" alt="exam-app" src="https://github.com/user-attachments/assets/926b9aa2-a676-4cde-8ff5-12b54b3946e0" />
+
 
 A robust, full-stack Next.js application built to efficiently manage online exams, diplomas, and users. Featuring sophisticated role-based access control, a rich interactive dashboard, and a comprehensive audit logging system.
 
