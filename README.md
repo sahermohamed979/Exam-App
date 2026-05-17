@@ -60,47 +60,5 @@ A robust, full-stack Next.js application built to efficiently manage online exam
 │   └── shared/          # Globally shared types, hooks, context, and constants
 ```
 
-## 🛠️ Getting Started
 
-### Prerequisites
 
-Make sure you have [Node.js](https://nodejs.org/) installed (v18+ recommended) and a package manager such as `npm`, `yarn`, `pnpm`, or `bun`.
-
-### Installation
-
-1. Clone the repository and navigate into the directory:
-
-   ```bash
-   git clone <repository-url>
-   cd exam
-   ```
-
-2. Install the dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Set up environment variables:
-   Create a `.env` file in the root of the project and populate it with your configuration (e.g., API URL, NextAuth secrets).
-
-   ```env
-   NEXT_PUBLIC_API_URL=http://your-backend-api.com
-   NEXTAUTH_SECRET=your_super_secret_key
-   ```
-
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to explore the app.
-
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are highly appreciated. Feel free to check out the issues page if you want to contribute.
-
-## 📄 License
-
-This project is licensed under the MIT License.
