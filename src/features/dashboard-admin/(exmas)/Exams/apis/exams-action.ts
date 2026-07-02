@@ -1,3 +1,4 @@
+'use server';
 import { ApiResponse, IPaginationResponse } from "@/src/shared/types/api";
 import { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";

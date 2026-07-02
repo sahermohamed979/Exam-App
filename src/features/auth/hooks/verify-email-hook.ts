@@ -16,7 +16,7 @@ export function useVerifyEmail() {
     handleSubmit: handleSubmitEmail,
     control: controlEmail,
     setError: setErrorEmail,
-
+    
     formState: formStateEmail,
   } = useForm({
     defaultValues: {
@@ -28,21 +28,18 @@ export function useVerifyEmail() {
   const onSubmitEmail = async (values: VerifyEmailField) => {
     await mutateEmail(values);
   };
-  const { mutateAsync: mutateEmail, isPending: isPendingEmail } = useMutation({
+  const { mutateAsync: mutateEmail, isPending: isPendingEmail  } = useMutation({
     mutationFn: async (values: VerifyEmailField) => {
       const response = await sendEmailVerification(values);
 
       if (!response?.status) throw new Error(response?.message);
       return response;
     },
-    onSuccess: () => {
-     
-    },
+    onSuccess: () => {},
 
     onError: (error) => {
-
       setErrorEmail("email", {
-        message: error.message,
+        message: "This email is already registered.",
       });
     },
   });
@@ -64,14 +61,13 @@ export function useVerifyEmail() {
   const onSubmitOtp = async (values: VerifyOtpField) => {
     await mutateOtp(values);
   };
-  const { mutateAsync: mutateOtp, isPending: isPendingOtp  } = useMutation({
+  const { mutateAsync: mutateOtp, isPending: isPendingOtp } = useMutation({
     mutationFn: async (values: VerifyOtpField) => {
       const response = await verifyOtp(values);
 
       if (!response?.status) throw new Error(response?.message);
       return response;
     },
-   
 
     onError: (error) => {
       otpSetError("form", {

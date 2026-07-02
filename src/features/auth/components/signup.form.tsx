@@ -45,6 +45,7 @@ export default function SignUpForm() {
     otpSubmit,
     otpControl,
     resetOtp,
+
     otpFormState,
     isPendingOtp,
     onSubmitOtp,
@@ -63,7 +64,13 @@ export default function SignUpForm() {
     <div className="h-screen flex items-center justify-center  ">
       <div className="w-full  max-w-2xl flex flex-col gap-5    ">
         {/* progress bar */}
-        {step > 1 && <ProgressBar  totalSteps={4} step={part} className="ms-6 max-w-[480px]" />}
+        {step > 1 && (
+          <ProgressBar
+            totalSteps={4}
+            step={part}
+            className="ms-6 max-w-[480px]"
+          />
+        )}
         {/* email form */}
 
         {step === 1 && (
@@ -82,6 +89,9 @@ export default function SignUpForm() {
             <div className="flex flex-col gap-5">
               {/* Email */}
               <div className="flex flex-col gap-1.5">
+                <h2 className="text-3xl font-bold text-gray-900 mb-1 font-inter">
+                  Create Account
+                </h2>
                 <FieldGroup className="mb-2">
                   <Controller
                     name="email"
@@ -109,7 +119,9 @@ export default function SignUpForm() {
                         {fieldState.invalid && (
                           <FieldError
                             className="text-red-500 text-sm capitalize font-mono"
-                            errors={[fieldState.error]}
+                            errors={[
+                              fieldState.error ?? formStateEmail.errors.form,
+                            ]}
                           />
                         )}
                       </Field>
@@ -157,9 +169,7 @@ export default function SignUpForm() {
                 setStep(3);
                 setPart(3);
                 resetOtp();
-              } catch {
-                
-              }
+              } catch {}
             })}
           >
             <h2 className="text-3xl font-bold text-gray-900 mb-6 font-inter">

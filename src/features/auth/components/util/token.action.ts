@@ -11,6 +11,9 @@ export const getAuthToken = async () => {
     const jwt = await decode({
       token: token,
       secret: process.env.NEXTAUTH_SECRET!,
+      
+      
+    
     });
 
     return jwt;

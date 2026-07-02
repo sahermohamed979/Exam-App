@@ -37,7 +37,7 @@ export function useUpdatePassword(token: string) {
     onSuccess: () => {},
     onError: () => {
       setError("form", {
-        message: "something went wrong",
+        message: "This email is not registered.",
       });
     },
   });

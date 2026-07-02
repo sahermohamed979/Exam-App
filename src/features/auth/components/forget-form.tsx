@@ -42,7 +42,7 @@ export default function ForgetForm() {
           </p>
 
           <div className="flex flex-col gap-5">
-            {/* Username */}
+            {/* email */}
             <div className="flex flex-col gap-1.5">
               <FieldGroup className="mb-2">
                 <Controller
@@ -71,7 +71,7 @@ export default function ForgetForm() {
                       {fieldState.invalid && (
                         <FieldError
                           className="text-red-500 text-sm capitalize font-mono"
-                          errors={[fieldState.error]}
+                          errors={[fieldState.error ?? formState.errors.form]}
                         />
                       )}
                     </Field>

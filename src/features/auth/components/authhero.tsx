@@ -7,10 +7,10 @@ import {
 
 export default function AuthHero() {
   return (
-    <div className="h-screen bg-[linear-gradient(126deg,#ffffff,#d0e5ff,#f3f8ff)] hidden lg:block">
+    <div className={`h-screen bg-[linear-gradient(126deg,#ffffff,#d0e5ff,#f3f8ff)] hidden lg:block`}>
       <div className="max-w-3xl mx-auto px-3 py-5 mt-10">
         {/* Logo */}
-        <div className="flex items-center gap-3 font-semibold text-lg text-blue-600 mb-12">
+        <div className={`flex items-center gap-3 font-semibold text-lg mb-12`}>
           <LucideFolderCode className="w-10 h-10" />
           <span className="font-semibold text-2xl">Exam App</span>
         </div>
