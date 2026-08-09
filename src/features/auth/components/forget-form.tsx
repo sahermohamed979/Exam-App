@@ -117,28 +117,28 @@ export default function ForgetForm() {
         </form>
       )}
       {step === 2 && (
-        <div className="flex-col space-y-6 max-w-[420px]  w-full ">
+        <div className="flex-col space-y-6 max-w-[420px] w-full px-5 sm:px-0 min-w-0">
           <span className="cursor-pointer mb-10 inline-block border p-1.5  border-gray-400">
             <MoveLeft size={24} onClick={() => setStep(1)} />
           </span>
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 font-inter">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 font-inter break-words">
             Password Reset Sent
           </h2>
-          <p className="font-mono text-[16px]  ">
+          <p className="font-mono text-[16px] break-words min-w-0 ">
             We have sent a password reset link to:
-            <span className="font-mono text-[16px] font-semibold text-blue-600 ">
+            <span className="font-mono text-[16px] font-semibold text-blue-600 break-words min-w-0">
               {email}
             </span>
           </p>
-          <p className="font-mono text-[16px]  ">
+          <p className="font-mono text-[16px] break-words min-w-0  ">
             Please check your inbox and follow the instructions to reset your
             password.
           </p>
-          <p className="font-mono   text-sm   text-gray-500">
+          <p className="font-mono   text-sm   text-gray-500 break-words min-w-0">
             If you don’t see the email within a few minutes, check your spam or
             junk folder.
           </p>
-          <p className="font-mono text-sm   ">
+          <p className="font-mono text-sm break-words min-w-0   ">
             Don’t have an account?{" "}
             <Link href={"/signup"} className="text-blue-600">
               Create yours{" "}

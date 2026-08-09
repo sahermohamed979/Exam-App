@@ -34,8 +34,8 @@ export default function ChangeForm() {
     mutate(data);
   };
   return (
-    <main className="flex-1 p-4 mt-4">
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <main className="flex-1 min-w-0 w-full p-4 mt-4">
+      <form className="w-full max-w-full min-w-0" onSubmit={handleSubmit(onSubmit)}>
         {" "}
         <div className="flex flex-col gap-5 ">
           <FieldGroup className="mb-2 relative">

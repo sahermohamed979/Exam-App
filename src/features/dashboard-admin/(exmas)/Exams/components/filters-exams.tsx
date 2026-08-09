@@ -54,9 +54,9 @@ export function FilterExam({
     <Collapsible
       open={isOpen}
       onOpenChange={setIsOpen}
-      className="flex w-full flex-col gap-2   mb-4 transition-all bg-blue-600 "
+      className="flex w-full min-w-0 flex-col gap-2   mb-4 transition-all bg-blue-600 "
     >
-      <div className="flex items-center justify-between gap-4 px-4  py-2 ">
+      <div className="flex w-full min-w-0 items-center justify-between gap-4 px-4  py-2 ">
         <h4 className="text-sm font-semibold flex items-center gap-2 text-white">
           <SlidersHorizontal size={20} />
           <span className="text-[16px] font-inter font-semibold">
@@ -77,20 +77,20 @@ export function FilterExam({
         </CollapsibleTrigger>
       </div>
 
-      <CollapsibleContent className="flex flex-col gap-4 p-5 bg-white">
-        <form onSubmit={handleSubmit(onFilter)} className="flex flex-col gap-4">
+      <CollapsibleContent className="flex w-full min-w-0 flex-col gap-4 p-4 sm:p-5 bg-white">
+        <form onSubmit={handleSubmit(onFilter)} className="flex w-full min-w-0 flex-col gap-4">
           {/* Search */}
-          <div className="border flex p-4 text-sm bg-white border-gray-200">
+          <div className="border flex w-full min-w-0 p-4 text-sm bg-white border-gray-200">
             <input
               {...register("search")}
               type="text"
-              className="w-full h-full outline-none font-mono"
+              className="w-full h-full min-w-0 outline-none font-mono"
               placeholder="Search by Name or Description"
             />
-            <Search size={20} className="text-gray-200" />
+            <Search size={20} className="text-gray-200 shrink-0" />
           </div>
-          <div className=" flex gap-2">
-            <div className="border border-gray-200 px-4 py-3 text-sm flex justify-between w-[320px] bg-transparent">
+          <div className="flex flex-col sm:flex-row gap-2 min-w-0">
+            <div className="border border-gray-200 px-4 py-3 text-sm flex justify-between w-full max-w-full sm:w-[320px] min-w-0 bg-transparent">
               <select
                 {...register("diplomaId", {
                   setValueAs: (v) => (v === "" ? undefined : v),
@@ -110,7 +110,7 @@ export function FilterExam({
               />
             </div>
             {/* Immutable */}
-            <div className="border border-gray-200 px-4 py-3 text-sm flex justify-between w-[320px] bg-transparent">
+            <div className="border border-gray-200 px-4 py-3 text-sm flex justify-between w-full max-w-full sm:w-[320px] min-w-0 bg-transparent">
               <select
                 {...register("immutable", {
                   setValueAs: (v) => (v === "" ? undefined : v === "true"),
@@ -128,17 +128,17 @@ export function FilterExam({
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-row-reverse gap-4">
+          <div className="flex flex-row-reverse flex-wrap gap-4 max-sm:w-full max-sm:flex-col">
             <button
               type="submit"
-              className="bg-gray-200 cursor-pointer  text-gray-800 py-2 px-4  font-mono w-25"
+              className="bg-gray-200 cursor-pointer  text-gray-800 py-2 px-4  font-mono w-25 max-sm:w-full"
             >
               Apply
             </button>
             <button
               type="button"
               onClick={handleReset}
-              className=" p-2 text-gray-800 font-mono w-25"
+              className=" p-2 text-gray-800 font-mono w-25 max-sm:w-full"
             >
               Clear
             </button>

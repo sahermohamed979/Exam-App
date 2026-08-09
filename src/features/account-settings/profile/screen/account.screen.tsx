@@ -49,14 +49,17 @@ export default function AccountScreen() {
     }
   }, [data, reset]);
   return (
-    <main className="flex-1 p-4">
-      <form className="w-full  px-10" onSubmit={handleSubmit(onSubmt)}>
+    <main className="flex-1 min-w-0 w-full p-4">
+      <form
+        className="w-full max-w-full min-w-0 px-2 sm:px-10"
+        onSubmit={handleSubmit(onSubmt)}
+      >
         <div>
           <div className="flex flex-col gap-5">
             {/* Email */}
             <div className="flex  gap-1.5 justify-center items-center">
               <FieldGroup className=" gap-4">
-                <div className=" grid grid-cols-2 gap-5">
+                <div className=" grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <Field className="gap-1">
                     <FieldLabel
                       htmlFor="first-name"
@@ -140,8 +143,8 @@ export default function AccountScreen() {
                   </FieldLabel>
 
                   <div
-                    className={`flex items-center border  bg-white h-[46px] px-3 gap-2
-         
+                    className={`flex items-center border bg-white h-[46px] px-3 gap-2 w-full min-w-0
+ 
           focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500`}
                   >
                     <div className="flex items-center gap-1.5 shrink-0 border-r border-gray-300 pr-3">
@@ -170,7 +173,7 @@ export default function AccountScreen() {
                   </div>
                 </Field>
 
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 min-w-0">
                   <DeleteAcount />
                   <button
                     type="submit"

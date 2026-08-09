@@ -3,7 +3,7 @@ import ExamsScreen from "@/src/features/dashboard-admin/(exmas)/Exams/screen/exa
 
 export default function AdminExamsPage() {
   return (
-    <main className="w-full">
+    <main className="w-full min-w-0">
       <HeaderExams />
       <ExamsScreen />
     </main>

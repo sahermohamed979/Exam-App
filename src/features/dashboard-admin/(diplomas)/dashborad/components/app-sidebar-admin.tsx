@@ -1,9 +1,5 @@
 import {
-  BookOpen,
-  GraduationCap,
-  Logs,
   LucideFolderCode,
-  User,
 } from "lucide-react";
 import {
   Sidebar,

@@ -18,10 +18,10 @@ export default async function page({
   const diplomaPromise = getDiploma(id);
 
   return (
-    <main className=" w-full">
+    <main className="w-full min-w-0">
       <Headers prams={{ diploma }} />
       <TitleButtons params={{ id, diploma }} />
-      <div className="p-4  bg-gray-100">
+      <div className="p-4 w-full min-w-0  bg-gray-100">
         {" "}
         <Suspense fallback={<SelectedDiplomaSkeleton />}>
           <ViewScreenDiploma diplomaPromise={diplomaPromise} />

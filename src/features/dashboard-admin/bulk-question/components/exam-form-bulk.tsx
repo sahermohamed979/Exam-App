@@ -28,7 +28,7 @@ export default function ExamFormBulk() {
 
 
   return (
-    <div className="flex w-full flex-col gap-2 mb-6 transition-all bg-blue-600">
+    <div className="flex w-full min-w-0 flex-col gap-2 mb-6 transition-all bg-blue-600">
       <div>
         <div className="flex items-center justify-between gap-4 px-4 py-2">
           <h4 className="text-sm font-semibold flex items-center gap-2 text-white">
@@ -38,7 +38,7 @@ export default function ExamFormBulk() {
           </h4>
         </div>
 
-        <div className="flex flex-col gap-2 p-5 bg-white">
+        <div className="flex w-full min-w-0 flex-col gap-2 p-4 sm:p-5 bg-white">
           <FieldGroup>
             <Label className="text-gray-800 text-[16px] font-mono pointer-events-none">
               Exam
@@ -49,8 +49,8 @@ export default function ExamFormBulk() {
               control={control}
               render={({ field }) => (
                 <Select value={field.value} onValueChange={field.onChange}>
-                  <SelectTrigger className="border flex items-center w-full py-6 text-sm bg-white border-gray-200 rounded-none shadow-none h-auto">
-                    <span className="flex-1 text-left ml-2 font-mono text-gray-500">
+                  <SelectTrigger className="border flex items-center w-full max-w-full min-w-0 py-6 text-sm bg-white border-gray-200 rounded-none shadow-none h-auto">
+                    <span className="flex-1 min-w-0 text-left ml-2 font-mono text-gray-500 break-words">
                       <SelectValue placeholder="None" />
                     </span>
                   </SelectTrigger>

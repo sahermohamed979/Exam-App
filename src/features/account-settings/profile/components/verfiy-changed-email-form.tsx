@@ -96,7 +96,7 @@ export default function VerifyChangedEmailForm({
                   >
                     <InputOTPGroup className="space-x-2  w-full  justify-center py-3 ">
                       {Array.from({ length: 6 }, (_, i) => (
-                        <InputOTPSlot key={i} index={i} />
+                        <InputOTPSlot key={i} index={i} className="max-sm:size-8" />
                       ))}
                     </InputOTPGroup>
                   </InputOTP>

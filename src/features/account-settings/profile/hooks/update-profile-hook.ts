@@ -3,7 +3,6 @@ import { useMutation } from "@tanstack/react-query";
 import { updateAccountProfileRequest } from "../apis/account.action";
 import { AccountProfileField } from "../../../auth/types/auth";
 import { useSession } from "next-auth/react";
-import { Console } from "console";
 
 export function useUpdateAccount() {
   const { update } = useSession();

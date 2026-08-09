@@ -62,7 +62,7 @@ export default function AddForm({
     <FormProvider {...form}>
       <form
         id="add-diploma-form"
-        className=" "
+        className="w-full max-w-full min-w-0"
         onSubmit={form.handleSubmit(onSubmit)}
       >
         <FieldGroup className="space-y-6">

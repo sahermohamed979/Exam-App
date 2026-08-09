@@ -53,7 +53,7 @@ export default function ExamsScreen() {
   };
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 w-full min-w-0">
       <PaginationExam
         currentPage={page}
         totalPages={totalPages}
@@ -62,7 +62,7 @@ export default function ExamsScreen() {
         onNextPage={nextPage}
         onPreviousPage={previousPage}
       />
-      <div className="p-5">
+      <div className="p-4 sm:p-5 w-full min-w-0">
         <FilterExam onFilter={handleFilterChange} onReset={resetFilters} />
         {isLoading ? (
           <ExamTestSkeleton />

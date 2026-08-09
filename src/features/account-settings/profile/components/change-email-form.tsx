@@ -60,7 +60,7 @@ export function ChangeEmailForm() {
           <PencilLine size={16} /> Change
         </button>
       </DialogTrigger>
-      <DialogContent className="w-[589 px] ">
+      <DialogContent className="max-sm:w-[calc(100%-2rem)]">
         <DialogHeader className="space-y-5">
           <ProgressBar totalSteps={2} step={step} className="mt-6" />
           <DialogTitle className="font-inter font-bold text-3xl text-gray-800">

@@ -23,12 +23,16 @@ export default function BulkQuestionScreen() {
   };
 
   return (
-    <div className="w-full bg-gray-100 ">
+    <div className="w-full min-w-0 bg-gray-100 ">
       <FormProvider {...form}>
-        <form id="bulk-question-form" onSubmit={form.handleSubmit(SubmitHand)}>
+        <form
+          id="bulk-question-form"
+          onSubmit={form.handleSubmit(SubmitHand)}
+          className="w-full max-w-full min-w-0"
+        >
           <ExamFormBulk />
 
-          <div className="  bg-gray-100  w-full">
+          <div className="bg-gray-100 w-full max-w-full min-w-0">
             <BulkQuestionBody />
           </div>
         </form>

@@ -77,34 +77,34 @@ export function FilterDashboard({
           </div>
 
           {/* Immutable */}
-          <div className="border border-gray-200 px-4 py-3 text-sm flex justify-between w-[320px] bg-transparent">
+          <div className="border border-gray-200 px-4 py-3 text-sm flex justify-between w-full max-w-full sm:w-[320px] bg-transparent min-w-0">
             <select
               {...register("immutable", {
                 setValueAs: (v) => (v === "" ? undefined : v === "true"),
               })}
-              className="font-mono bg-transparent text-gray-500 outline-none cursor-pointer flex-1 appearance-none"
+              className="font-mono bg-transparent text-gray-500 outline-none cursor-pointer flex-1 appearance-none min-w-0"
             >
               <option value="">None</option>
               <option value="true">Immutable</option>
             </select>
             <ChevronsDownUp
               size={16}
-              className="text-gray-500 pointer-events-none"
+              className="text-gray-500 pointer-events-none shrink-0"
             />
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-row-reverse gap-4">
+          <div className="flex flex-row-reverse gap-4 flex-wrap max-sm:flex-col">
             <button
               type="submit"
-              className="bg-gray-200  text-gray-800 py-2 px-4  font-mono w-25"
+              className="bg-gray-200  text-gray-800 py-2 px-4  font-mono w-25 max-sm:w-full"
             >
               Apply
             </button>
             <button
               type="button"
               onClick={handleReset}
-              className=" p-2 text-gray-800 font-mono w-25"
+              className=" p-2 text-gray-800 font-mono w-25 max-sm:w-full"
             >
               Clear
             </button>

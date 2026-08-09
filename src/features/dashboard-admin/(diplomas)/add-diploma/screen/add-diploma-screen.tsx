@@ -13,15 +13,15 @@ export default async function AddDiplomaScreen({
   const data = res && "id" in res ? (res as IDiploma) : undefined;
 
   return (
-    <div className="bg-[#f5f6f8] min-h-screen p-6 sm:p-8">
-      <div className=" mx-auto bg-white border border-gray-100  overflow-hidden shadow-sm">
+    <div className="bg-[#f5f6f8] min-h-screen w-full min-w-0 p-4 sm:p-8">
+      <div className="mx-auto w-full max-w-full min-w-0 bg-white border border-gray-100  overflow-hidden shadow-sm">
         <div
-          className={`bg-blue-600 text-white font-semibold px-6 py-3 text-sm`}
+          className={`bg-blue-600 text-white font-semibold px-4 sm:px-6 py-3 text-sm`}
         >
           {mode === "add" ? "Add New Diploma" : "Edit Diploma"}
         </div>
 
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           <AddForm mode={mode} id={id} data={data} />
         </div>
       </div>

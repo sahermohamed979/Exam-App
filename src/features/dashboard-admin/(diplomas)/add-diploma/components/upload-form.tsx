@@ -76,7 +76,7 @@ export default function UploadForm({
   }, [form, profileForm, uploadImages]);
 
   return (
-    <div className="relative ">
+    <div className="relative w-full min-w-0">
       <Controller
         name="image"
         control={form.control}
@@ -99,8 +99,8 @@ export default function UploadForm({
             />
             <div className="relative">
               {image ? (
-                <div className="flex h-26 items-center justify-between w-full border border-slate-300 bg-slate-50 p-1.5 transition-colors">
-                  <div className="flex items-center gap-4">
+                <div className="flex flex-col sm:flex-row min-h-26 sm:h-26 items-start sm:items-center justify-between gap-3 w-full min-w-0 border border-slate-300 bg-slate-50 p-1.5 transition-colors">
+                  <div className="flex items-center gap-4 min-w-0 w-full sm:w-auto">
                     <div className="relative h-21.25 w-21.25 shrink-0 border border-gray-100">
                       <Image
                         src={image}
@@ -109,12 +109,12 @@ export default function UploadForm({
                         className="object-cover"
                       />
                     </div>
-                    <span className="max-w-125 truncate text-xl font-mono text-gray-500">
+                    <span className="max-w-125 flex-1 min-w-0 truncate text-xl font-mono text-gray-500">
                       {fileDetails?.name || "Image.png"}
                     </span>
                   </div>
 
-                  <div className="flex items-center gap-4 pr-4">
+                  <div className="flex items-center gap-4 pr-4 min-w-0">
                     <span className="text-base font-mono text-gray-400">
                       {fileDetails?.size || "0.00 MB"}
                     </span>
@@ -154,18 +154,18 @@ export default function UploadForm({
               ) : (
                 <label
                   htmlFor={field.name}
-                  className="relative flex h-26 w-full cursor-pointer items-center justify-center gap-5 border border-slate-300 bg-slate-50 px-5 py-0 transition-colors hover:bg-gray-50"
+                  className="relative flex min-h-26 sm:h-26 w-full min-w-0 cursor-pointer flex-col sm:flex-row items-center justify-center gap-2 sm:gap-5 border border-slate-300 bg-slate-50 px-5 py-2 sm:py-0 transition-colors hover:bg-gray-50"
                 >
-                  <div className="w-10 h-10 flex items-center justify-center absolute left-5 text-gray-300">
+                  <div className="hidden sm:flex w-10 h-10 items-center justify-center absolute left-5 text-gray-300">
                     <FileImage
                       size={45}
                       className="text-gray-400 font-light opacity-50"
                     />
                   </div>
 
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
-                    <CloudUpload size={24} className="text-gray-400" />
-                    <span className="font-mono text-base">
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-gray-500 min-w-0 text-center sm:text-left">
+                    <CloudUpload size={24} className="text-gray-400 shrink-0" />
+                    <span className="font-mono text-base break-words min-w-0">
                       Drop an image here or{" "}
                       <span className="text-blue-500 hover:underline font-mono">
                         select from your computer

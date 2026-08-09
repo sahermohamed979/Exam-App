@@ -128,6 +128,6 @@ export async function getUser() {
 
     return data.payload;
   } catch (error) {
-    console.log("error.message", error);
+    return error;
   }
 }

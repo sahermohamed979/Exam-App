@@ -19,6 +19,7 @@ import {
 import { Skeleton } from "./skeleton";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./tooltip";
 import { Menu } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
@@ -38,7 +39,6 @@ type SidebarContextProps = {
 };
 
 const SidebarContext = React.createContext<SidebarContextProps | null>(null);
-
 function useSidebar() {
   const context = React.useContext(SidebarContext);
   if (!context) {
@@ -158,6 +158,8 @@ function Sidebar({
   collapsible?: "offcanvas" | "icon" | "none";
 }) {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
+  const { data } = useSession();
+  const role = data?.user.role;
 
   if (collapsible === "none") {
     return (
@@ -194,7 +196,15 @@ function Sidebar({
             <SheetTitle>Sidebar</SheetTitle>
             <SheetDescription>Displays the mobile sidebar.</SheetDescription>
           </SheetHeader>
-          <div className="flex h-full w-full flex-col p-2">{children}</div>
+          <div
+            className={cn(
+              "flex h-full w-full flex-col p-2",
+              role === "ADMIN" && "bg-gray-800",
+            )}
+          >
+            {" "}
+            {children}
+          </div>
         </SheetContent>
       </Sheet>
     );

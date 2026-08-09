@@ -12,11 +12,11 @@ export default function TitleButtons({
   params: { id: string; diploma?: string };
 }) {
   return (
-    <header className="flex w-full  items-center justify-between mt-4 p-3 border bg-white border-gray-200">
-      <h1 className="font-semibold font-inter text-[18px] text-gray-800 ms-4">
+    <header className="flex flex-wrap w-full min-w-0 items-center justify-between gap-3 mt-4 px-4 py-3 sm:px-3 border bg-white border-gray-200">
+      <h1 className="font-semibold font-inter text-[18px] text-gray-800 ms-4 max-sm:ms-0 min-w-0 break-words">
         {formatSlugName(params.diploma ?? "")}
       </h1>
-      <div className="flex gap-3">
+      <div className="flex flex-wrap items-center gap-2 min-w-0">
         <button
           onClick={async () => {
             await immutableDiploma(params.id);
@@ -33,7 +33,7 @@ export default function TitleButtons({
         </button>
         <Link
           href={`/${params.id}/edit`}
-          className="px-4  bg-blue-600  text-white flex items-center gap-2"
+          className="px-4  py-2 bg-blue-600  text-white flex items-center gap-2"
         >
           <PenLine size={18} />
           <span className="material-symbols-outlined font-mono text-sm">

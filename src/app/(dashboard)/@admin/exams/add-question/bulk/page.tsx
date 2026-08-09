@@ -2,7 +2,7 @@ import BulkQuestionScreen from "@/src/features/dashboard-admin/bulk-question/scr
 
 export default function page() {
   return (
-   <main className="w-full bg-gray-100 p-4">
+   <main className="w-full min-w-0 bg-gray-100 p-4">
       
           <BulkQuestionScreen/>
       

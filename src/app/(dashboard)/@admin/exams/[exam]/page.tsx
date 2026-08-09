@@ -29,16 +29,16 @@ export default async function page({
   const questions = await get_exam_questions_actions(examId);
 
   return (
-    <main className=" w-full">
+    <main className="w-full min-w-0">
       <Header_view_exam prams={{ exam }} />
       <TitleButtonsExam params={{ id: examId, exam: exam }} />
 
-      <div className="p-4  bg-gray-100 max-h-175 ">
+      <div className="p-4 w-full min-w-0  bg-gray-100 max-h-175 ">
         <Suspense fallback={<SelectedDiplomaSkeleton />}>
           <Veiw_exam_screen examData={data} />
         </Suspense>
       </div>
-      <div className="px-4 py-2  bg-gray-100">
+      <div className="px-4 py-2 w-full min-w-0  bg-gray-100">
         <Table className="w-full border-collapse">
           <TableHeader className="bg-blue-600">
             <TableRow className="hover:bg-transparent border-none">

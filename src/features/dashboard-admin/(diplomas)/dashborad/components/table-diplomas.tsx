@@ -29,6 +29,39 @@ import {
 import Link from "next/link";
 import DeletButton from "./delet-button";
 
+function DiplomaActions({ diploma }: { diploma: IDiploma }) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button className="p-2 bg-[#e2e8f0] hover:bg-[#cbd5e1] text-[#475569] rounded transition-colors inline-flex items-center justify-center">
+          <Ellipsis size={18} />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-32">
+        <DropdownMenuItem className=" cursor-pointer">
+          <Link
+            href={`/${diploma.id}?diploma=${encodeURIComponent(diploma.title)}`}
+            className="flex items-center gap-2"
+          >
+            <Eye size={18} />
+            <span>View</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
+          <Pencil size={18} />
+          <Link
+            href={`/${diploma.id}/edit`}
+            className="flex items-center gap-2"
+          >
+            <span>Edit</span>
+          </Link>
+        </DropdownMenuItem>
+        <DeletButton id={diploma.id} />
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 export function TableDiplomas({
   currentDiplomas,
   onSort,
@@ -37,8 +70,43 @@ export function TableDiplomas({
   onSort?: (sortBy: string, sortOrder: string) => void;
 }) {
   return (
-    <Table className="w-full border-collapse">
-      <TableHeader className="bg-blue-600">
+    <>
+      {/* Mobile cards */}
+      <div className="md:hidden flex flex-col gap-3 w-full max-w-full min-w-0">
+        {currentDiplomas.map((diploma) => (
+          <div
+            key={diploma.id}
+            className="bg-white border border-gray-100 rounded-md p-4 flex flex-col gap-3 w-full max-w-full min-w-0 shadow-sm"
+          >
+            <div className="flex items-start gap-3 min-w-0">
+              <div className="relative w-16 h-16 shrink-0 overflow-hidden rounded-sm bg-gray-50">
+                <Image
+                  src={diploma.image || ""}
+                  alt={diploma.title}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="flex-1 min-w-0">
+                <h3 className="font-mono text-[#334155] text-sm font-medium break-words">
+                  {diploma.title}
+                </h3>
+              </div>
+              <div className="shrink-0">
+                <DiplomaActions diploma={diploma} />
+              </div>
+            </div>
+            <p className="font-mono text-gray-500 text-sm leading-relaxed break-words min-w-0">
+              {diploma.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop table */}
+      <div className="hidden md:block w-full max-w-full min-w-0">
+        <Table className="w-full border-collapse">
+          <TableHeader className="bg-blue-600">
         <TableRow className="hover:bg-transparent border-none">
           <TableHead className="text-white font-medium py-2 px-4">
             Image
@@ -116,38 +184,13 @@ export function TableDiplomas({
             </TableCell>
 
             <TableCell className="text-right px-4">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button className="p-2 bg-[#e2e8f0] hover:bg-[#cbd5e1] text-[#475569] rounded transition-colors inline-flex items-center justify-center">
-                    <Ellipsis size={18} />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-32">
-                  <DropdownMenuItem className=" cursor-pointer">
-                    <Link
-                      href={`/${diploma.id}?diploma=${encodeURIComponent(diploma.title)}`}
-                      className="flex items-center gap-2"
-                    >
-                      <Eye size={18} />
-                      <span>View</span>
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
-                    <Pencil size={18} />
-                    <Link
-                      href={`/${diploma.id}/edit`}
-                      className="flex items-center gap-2"
-                    >
-                      <span>Edit</span>
-                    </Link>
-                  </DropdownMenuItem>
-                  <DeletButton id={diploma.id} />
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <DiplomaActions diploma={diploma} />
             </TableCell>
           </TableRow>
         ))}
       </TableBody>
     </Table>
+      </div>
+    </>
   );
 }

@@ -125,7 +125,6 @@ export async function updateQuestion(
 
     return data.payload.question;
   } catch (error) {
-    console.log(error);
     if (axios.isAxiosError(error)) {
       const message = error.response?.data?.message || "something went wrong";
       throw new Error(message);

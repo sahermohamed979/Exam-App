@@ -80,18 +80,19 @@ export default function ExamTestScreen() {
   }, [mutation.isSuccess]);
 
   return (
-    <>
+    
+    <div className="w-full max-w-full min-w-0">
       <HeaderUserDashboard title={`${params.exam} `} />
 
       {isLoading || mutation.isPending ? (
         <ExamTestSkeleton />
       ) : (
         <>
-          <div className="flex flex-col gap-5 bg-white rounded-lg">
+          <div className="flex flex-col gap-5 bg-white rounded-lg w-full max-w-full min-w-0">
             {/* Header */}
-            <div className="flex items-center justify-between gap-5 px-4 py-2">
-              <div className="flex w-full flex-col relative">
-                <h2 className="mb-3 font-mono text-[16px]">
+            <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between sm:gap-5 px-3 sm:px-4 py-2 w-full max-w-full min-w-0">
+              <div className="flex w-full min-w-0 flex-col relative">
+                <h2 className="mb-3 font-mono text-[16px] max-sm:mb-10 max-sm:pr-20 max-sm:truncate">
                   {formatSlugName(`${params.exam} `)}
                 </h2>
 
@@ -100,7 +101,7 @@ export default function ExamTestScreen() {
                   className="h-4 rounded-none"
                 />
 
-                <div className="flex justify-between absolute right-0">
+                <div className="flex justify-between absolute right-0 max-sm:static max-sm:mt-1.5 max-sm:right-auto">
                   <span className="text-sm font-mono">
                     Question{" "}
                     <span className="font-semibold text-blue-600">
@@ -114,30 +115,32 @@ export default function ExamTestScreen() {
               {step === "exam" && (
                 <>
                   {" "}
-                  <div className="w-px h-12 bg-gray-300 mx-2" />
-                  <CircularProgress
-                    value={(remaining / (duration * 60 || 1)) * 100}
-                    takneColor="#155dfc"
-                    trackColor="#e0e7ff"
-                    className="rotate-90 scale-x-[-1]"
-                    size={64}
-                    strokeWidth={10}
-                  >
-                    <span className="text-xs font-semibold">
-                      {formatTime(remaining)}
-                    </span>
-                  </CircularProgress>
+                  <div className="w-px h-12 bg-gray-300 mx-2 shrink-0 hidden sm:block" />
+                  <div className="absolute right-3 top-2 shrink-0 origin-center scale-75 sm:static sm:right-auto sm:top-auto sm:scale-100">
+                    <CircularProgress
+                      value={(remaining / (duration * 60 || 1)) * 100}
+                      takneColor="#155dfc"
+                      trackColor="#e0e7ff"
+                      className="rotate-90 scale-x-[-1]"
+                      size={64}
+                      strokeWidth={10}
+                    >
+                      <span className="text-xs font-semibold">
+                        {formatTime(remaining)}
+                      </span>
+                    </CircularProgress>
+                  </div>
                 </>
               )}
             </div>
             {step === "exam" && (
               <>
                 {}
-                <form onSubmit={form.handleSubmit(onSubmit)} className="p-5">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="p-3 sm:p-5 w-full max-w-full min-w-0">
                   {questions && (
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-4 w-full max-w-full min-w-0">
                       {/* Question */}
-                      <h2 className="font-mono text-2xl text-blue-600 font-semibold">
+                      <h2 className="font-mono text-base sm:text-2xl text-blue-600 font-semibold break-words min-w-0">
                         {questions[currentQ].text}
                       </h2>
 
@@ -145,7 +148,7 @@ export default function ExamTestScreen() {
                       {questions[currentQ].answers.map((answer: Answer) => (
                         <div
                           key={answer.id}
-                          className="bg-gray-50  hover:bg-gray-100 text-gray-800 font-mono text-sm flex items-center"
+                          className="bg-gray-50 hover:bg-gray-100 text-gray-800 font-mono text-sm flex items-center min-w-0 w-full max-w-full"
                         >
                           <Controller
                             control={form.control}
@@ -158,11 +161,11 @@ export default function ExamTestScreen() {
                                   checked={field.value === answer.id}
                                   onChange={() => field.onChange(answer.id)}
                                   id={answer.id}
-                                  className=" accent-[#155dfc] ms-2 "
+                                  className=" accent-[#155dfc] ms-2 shrink-0 "
                                   required
                                 />
                                 <label
-                                  className="ms-2 w-full  py-4   "
+                                  className="ms-2 w-full min-w-0 py-4 break-words"
                                   htmlFor={answer.id}
                                 >
                                   {answer.text}
@@ -174,11 +177,11 @@ export default function ExamTestScreen() {
                       ))}
 
                       {/* Navigation */}
-                      <div className="flex gap-2 mt-7">
+                      <div className="flex gap-2 mt-7 w-full max-w-full min-w-0">
                         <button
                           disabled={currentQ === 0}
                           type="button"
-                          className="px-4 py-3 bg-gray-200 text-gray-700 w-full flex items-center justify-center gap-2"
+                          className="px-2 sm:px-4 py-2 sm:py-3 bg-gray-200 text-gray-700 w-full flex items-center justify-center gap-2"
                           onClick={() => setCurrentQ((prev) => prev - 1)}
                         >
                           <ChevronLeft size={18} />
@@ -191,7 +194,7 @@ export default function ExamTestScreen() {
                           <button
                             type="submit"
                             disabled={!currentAnswer || mutation.isPending}
-                            className="px-4 py-3 bg-green-600 text-white w-full flex items-center justify-center gap-2"
+                            className="px-2 sm:px-4 py-2 sm:py-3 bg-green-600 text-white w-full flex items-center justify-center gap-2"
                           >
                             Submit
                           </button>
@@ -199,7 +202,7 @@ export default function ExamTestScreen() {
                           <button
                             type="button"
                             disabled={!currentAnswer}
-                            className="px-4 py-3 bg-blue-600 text-white w-full flex items-center justify-center gap-2"
+                            className="px-2 sm:px-4 py-2 sm:py-3 bg-blue-600 text-white w-full flex items-center justify-center gap-2"
                             onClick={() => setCurrentQ((prev) => prev + 1)}
                           >
                             <span className="font-mono">Next</span>
@@ -221,7 +224,7 @@ export default function ExamTestScreen() {
                 <div className="animate-in fade-in duration-1000">
                   <ResultScreen mutation={mutation} />
                   {/*submit */}
-                  <div className="flex gap-5 items-center w-full px-5 ">
+                  <div className="flex gap-3 sm:gap-5 items-center w-full max-w-full min-w-0 px-3 sm:px-5 ">
                     <button
                       type="button"
                       onClick={() => {
@@ -231,7 +234,7 @@ export default function ExamTestScreen() {
                         setCurrentQ(0);
                         start();
                       }}
-                      className="px-4 py-3 bg-gray-200 text-gray-700 w-full flex items-center justify-center gap-2"
+                      className="px-3 sm:px-4 py-3 bg-gray-200 text-gray-700 w-full flex items-center justify-center gap-2"
                     >
                       <RotateCcw size={18} />
                       Restart
@@ -250,6 +253,6 @@ export default function ExamTestScreen() {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }

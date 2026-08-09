@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 export default function page() {
   return (
-    <main className="flex-1 p-4">
+    <main className="flex-1 min-w-0 w-full p-4">
       <Suspense fallback={<div>Loading...</div>}>
         <ExamTestScreen />
       </Suspense>

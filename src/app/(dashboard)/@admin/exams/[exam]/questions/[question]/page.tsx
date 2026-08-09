@@ -18,14 +18,14 @@ export default async function page({
   }
 
   return (
-    <main className="w-full  bg-gray-100">
+    <main className="w-full min-w-0  bg-gray-100">
       <QuestionHeader
         prams={{ exam: questionData.exam.title, questions: questionData.text }}
       />
       <QuestionHeaderButtons
         params={{ id: question, question: questionData }}
       />
-      <div className="bg-gray-100  p-4 ">
+      <div className="bg-gray-100 w-full min-w-0  p-4 ">
         {!questionData ? (
           <QuestionSkeleton />
         ) : (

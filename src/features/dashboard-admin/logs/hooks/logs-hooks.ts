@@ -103,7 +103,6 @@ export function UseGetAllUsers() {
     queryKey: ["all-users"],
     queryFn: async () => {
       const res = await getUser();
-      console.log("res", res);
 
       return res;
     },

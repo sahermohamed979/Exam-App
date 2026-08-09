@@ -42,13 +42,12 @@ export function FilterLogs({
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const usersList = useMemo(() => {
+  const usersList = useMemo<IUsers[]>(() => {
     if (users && "data" in users) {
       return users.data;
     }
     return [];
   }, [users]);
-  console.log("usersList", usersList);
   const { handleSubmit, reset, control } = useForm({
     defaultValues: DEFAULT_USER_LOGS_FILTERS,
   });
@@ -64,9 +63,9 @@ export function FilterLogs({
     <Collapsible
       open={isOpen}
       onOpenChange={setIsOpen}
-      className="flex w-full flex-col gap-2   mb-4 transition-all bg-blue-600 "
+      className="flex w-full min-w-0 flex-col gap-2   mb-4 transition-all bg-blue-600 "
     >
-      <div className="flex items-center justify-between gap-4 px-4  py-2 ">
+      <div className="flex w-full min-w-0 items-center justify-between gap-4 px-4  py-2 ">
         <h4 className="text-sm font-semibold flex items-center gap-2 text-white">
           <SlidersHorizontal size={20} />
           <span className="text-[16px] font-inter font-semibold">
@@ -88,15 +87,15 @@ export function FilterLogs({
       </div>
       {/* className="font-mono bg-transparent text-gray-500 outline-none cursor-pointer flex-1 appearance-none" */}
 
-      <CollapsibleContent className="flex flex-col gap-4 p-5 bg-white">
+      <CollapsibleContent className="flex w-full min-w-0 flex-col gap-4 p-4 sm:p-5 bg-white">
         <form
           onSubmit={handleSubmit(onFilter)}
           key={resetKey}
-          className="flex flex-col gap-4"
+          className="flex w-full min-w-0 flex-col gap-4"
         >
           {/* Search */}
 
-          <div className=" flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2 min-w-0">
             <Controller
               name="category"
               control={control}
@@ -105,8 +104,8 @@ export function FilterLogs({
                   onValueChange={field.onChange}
                   value={field.value || undefined}
                 >
-                  <SelectTrigger className="border flex items-center w-full py-6 text-sm bg-white border-gray-200 rounded-none shadow-none h-auto">
-                    <span className="flex-1 text-left ml-2 font-mono text-gray-500">
+                  <SelectTrigger className="border flex items-center w-full max-w-full min-w-0 py-6 text-sm bg-white border-gray-200 rounded-none shadow-none h-auto">
+                    <span className="flex-1 min-w-0 text-left ml-2 font-mono text-gray-500 break-words">
                       <SelectValue placeholder="Category" />
                     </span>
                   </SelectTrigger>
@@ -130,7 +129,7 @@ export function FilterLogs({
 
             <ChevronsDownUp
               size={16}
-              className="text-gray-500 pointer-events-none"
+              className="text-gray-500 pointer-events-none max-sm:hidden"
             />
 
             {/* Immutable */}
@@ -142,8 +141,8 @@ export function FilterLogs({
                   onValueChange={field.onChange}
                   value={field.value || undefined}
                 >
-                  <SelectTrigger className="border flex items-center w-full py-6 text-sm bg-white border-gray-200 rounded-none shadow-none h-auto">
-                    <span className="flex-1 text-left ml-2 font-mono text-gray-500">
+                  <SelectTrigger className="border flex items-center w-full max-w-full min-w-0 py-6 text-sm bg-white border-gray-200 rounded-none shadow-none h-auto">
+                    <span className="flex-1 min-w-0 text-left ml-2 font-mono text-gray-500 break-words">
                       <SelectValue placeholder="Action" />
                     </span>
                   </SelectTrigger>
@@ -172,8 +171,8 @@ export function FilterLogs({
                   onValueChange={field.onChange}
                   value={field.value || undefined}
                 >
-                  <SelectTrigger className="border flex items-center w-full py-6 text-sm bg-white border-gray-200 rounded-none shadow-none h-auto">
-                    <span className="flex-1 text-left ml-2 font-mono text-gray-500">
+                  <SelectTrigger className="border flex items-center w-full max-w-full min-w-0 py-6 text-sm bg-white border-gray-200 rounded-none shadow-none h-auto">
+                    <span className="flex-1 min-w-0 text-left ml-2 font-mono text-gray-500 break-words">
                       <SelectValue placeholder="Users" />
                     </span>
                   </SelectTrigger>
@@ -197,17 +196,17 @@ export function FilterLogs({
           </div>
 
           {/* Buttons */}
-          <div className="flex flex-row-reverse gap-4">
+          <div className="flex flex-row-reverse flex-wrap gap-4 max-sm:w-full max-sm:flex-col">
             <button
               type="submit"
-              className="bg-gray-200 cursor-pointer  text-gray-800 py-2 px-4  font-mono w-25"
+              className="bg-gray-200 cursor-pointer  text-gray-800 py-2 px-4  font-mono w-25 max-sm:w-full"
             >
               Apply
             </button>
             <button
               type="button"
               onClick={handleReset}
-              className=" p-2 text-gray-800 font-mono w-25"
+              className=" p-2 text-gray-800 font-mono w-25 max-sm:w-full"
             >
               Clear
             </button>

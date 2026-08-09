@@ -1,5 +1,6 @@
 "use client";
 import { useTimer } from "react-timer-hook";
+import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "exam_timer_expiry";
 
@@ -22,12 +23,18 @@ const getOrCreateExpiry = (minutes: number): Date => {
 };
 
 export function useResendTimer(minutes: number) {
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
   const { seconds: s, minutes: m, hours: h, restart, pause } = useTimer({
     expiryTimestamp: getOrCreateExpiry(minutes),
     autoStart: true,
   });
 
-  const remaining = h * 3600 + m * 60 + s;
+  const remaining = hydrated ? h * 3600 + m * 60 + s : 0;
 
   const start = () => {
     const expiry = new Date();

@@ -71,7 +71,6 @@ export function useUpdateQuestion(questionId: string) {
   const query = useMutation({
     mutationFn: async (values: IUpdateQuestionBody) => {
       const res = await updateQuestion(questionId, values);
-      console.log(res);
       return res;
     },
 

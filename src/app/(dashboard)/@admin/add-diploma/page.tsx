@@ -4,7 +4,7 @@ import AddDiplomaScreen from "@/src/features/dashboard-admin/(diplomas)/add-dipl
 
 export default function page() {
   return (
-    <main className="w-full">
+    <main className="w-full min-w-0">
       <HeadersAddDiploma />
       <AddButtons form="add-diploma-form" title="Add Diploma" />
 

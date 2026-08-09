@@ -23,7 +23,7 @@ export default function DeleteAcount() {
           </button>
         </DialogTrigger>
 
-        <DialogContent className="max-w-[558px]  flex flex-col  justify-center items-center">
+        <DialogContent className="max-w-[558px] max-sm:w-[calc(100%-2rem)] flex flex-col  justify-center items-center">
           <div className=" bg-red-50  p-8  text-red-600 flex  rounded-full  justify-center items-center    font-mono font-medium  text-sm">
             <span className="  bg-red-100 p-7 rounded-full">
               <TriangleAlert size={50} />
@@ -38,16 +38,16 @@ export default function DeleteAcount() {
             </DialogDescription>
           </DialogHeader>
 
-          <DialogFooter className="grid grid-cols-2 gap-4 mt-5">
+          <DialogFooter className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-5">
             <DialogClose asChild>
-              <button className="w-full bg-gray-200 flex py-4  px-17 cursor-pointer  justify-center align-center text-gray-800 text-sm font-mono ">
+              <button className="w-full bg-gray-200 flex py-4  px-4 sm:px-17 cursor-pointer  justify-center align-center text-gray-800 text-sm font-mono ">
                 Cancel
               </button>
             </DialogClose>
             <button
               onClick={() => mutate()}
               disabled={isPending}
-              className="w-full bg-red-500 py-4  px-17 flex items-center cursor-pointer  justify-center align-center text-white text-sm font-mono "
+              className="w-full bg-red-500 py-4  px-4 sm:px-17 flex items-center cursor-pointer  justify-center align-center text-white text-sm font-mono "
             >
               {isPending && <LoaderCircle className="animate-spin mr-2" />}
               Yes, delete{" "}

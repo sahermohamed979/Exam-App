@@ -3,7 +3,7 @@ import Headers from "@/src/features/dashboard-admin/(diplomas)/dashborad/compone
 
 export default function page() {
   return (
-    <main className=" w-full">
+    <main className=" w-full min-w-0">
       <Headers />
       <DashboardScreenAdmin />;
     </main>

@@ -17,18 +17,18 @@ export function BulkQuestionBody() {
   });
 
   return (
-    <div className="w-full ">
+    <div className="w-full min-w-0 ">
       {/* Header */}
 
       <div className="bg-blue-600 text-white px-4 py-2 font-semibold text-sm flex items-center gap-2">
         Questions
       </div>
-      <ul className="bg-white  flex items-center w-full ">
+      <ul className="bg-white flex items-center w-full min-w-0 ">
         {fields.map((field, index) => (
           <li
             key={field.id}
             onClick={() => setActiveQuestionIndex(index)}
-            className={`flex-1 relative px-4 border-s border-e   group py-2 text-sm font-medium    text-center ${
+            className={`flex-1 min-w-0 relative px-4 border-s border-e   group py-2 text-sm font-medium    text-center ${
               index === activeQuestionIndex
                 ? "bg-blue-100  border-blue-500  text-blue-500"
                 : " border-gray-200 text-gray-700 "
@@ -45,7 +45,7 @@ export function BulkQuestionBody() {
 
         <li
           onClick={() => append({ text: "", answers: [] })}
-          className="  ms-auto px-3 py-2.5 bg-gray-200 text-sm font-medium text-gray-800  text-center"
+          className="shrink-0 ms-auto px-3 py-2.5 bg-gray-200 text-sm font-medium text-gray-800  text-center"
         >
           <PlusIcon size={18} />
         </li>
@@ -53,7 +53,7 @@ export function BulkQuestionBody() {
 
       {/* Content Area */}
       {fields.length > 0 && (
-        <div className="bg-white p-4 border border-blue-600">
+        <div className="bg-white w-full max-w-full min-w-0 p-4 border border-blue-600">
           {/* Question Headline */}
 
           <BulkAnswers

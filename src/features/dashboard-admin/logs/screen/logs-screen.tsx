@@ -29,7 +29,7 @@ export default function LogsScreen() {
   );
 
   return (
-    <div>
+    <div className="w-full min-w-0">
       <PaginationDemo
         currentPage={page}
         totalPages={totalPages}
@@ -39,7 +39,7 @@ export default function LogsScreen() {
         onPreviousPage={previousPage}
         mode={mode}
       />
-      <div className=" w-full h-full p-6 bg-gray-100 ">
+      <div className="w-full min-w-0 h-full p-4 sm:p-6 bg-gray-100 ">
         <FilterLogs
           onFilter={(filters) => {
             applyFilters(filters);

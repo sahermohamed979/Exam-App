@@ -2,9 +2,9 @@ import { Skeleton } from "@/src/shared/components/ui/skeleton";
 
 export default function ExamSkeleton() {
   return (
-    <div className="py-2 px-3 border border-blue-300 border-dotted overflow-hidden items-center flex gap-4 w-full bg-[#eff6ff]">
+    <div className="py-2 px-3 border border-blue-300 border-dotted overflow-hidden flex flex-col sm:flex-row items-center sm:items-center gap-3 sm:gap-4 w-full bg-[#eff6ff]">
       {/* Image Skeleton */}
-      <div className="w-auto min-w-[120px] flex h-[110px] items-center justify-center py-2 border border-blue-300 bg-[#dbeafe]">
+      <div className="flex h-24 w-full sm:w-auto sm:min-w-[120px] sm:h-[110px] items-center justify-center py-2 border border-blue-300 bg-[#dbeafe]">
         <Skeleton className="w-[100px] h-[75px] bg-blue-200/50" />
       </div>
 
@@ -21,7 +21,7 @@ export default function ExamSkeleton() {
         </div>
 
         {/* Metadata section (Questions | Time) */}
-        <div className="flex gap-2 absolute top-0 right-2">
+        <div className="flex gap-2 static sm:absolute sm:top-0 sm:right-2">
           <Skeleton className="w-32 h-4 bg-blue-200/50 rounded-sm" />
         </div>
       </div>

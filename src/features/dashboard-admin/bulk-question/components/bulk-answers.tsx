@@ -46,7 +46,7 @@ function BulkAnswers({ activeQuestionIndex }: { activeQuestionIndex: number }) {
   });
 
   return (
-    <div className="">
+    <div className="w-full max-w-full min-w-0">
       {" "}
       <label className="block text-sm font-medium text-gray-700 mb-2">
         Question Headline
@@ -56,7 +56,7 @@ function BulkAnswers({ activeQuestionIndex }: { activeQuestionIndex: number }) {
         placeholder="Question Headline"
 
         {...register(`questions.${activeQuestionIndex}.text`)}
-        className="w-full p-3 border border-gray-300 rounded text-sm font-mono text-gray-700 placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
+        className="w-full max-w-full min-w-0 p-3 border border-gray-300 rounded text-sm font-mono text-gray-700 placeholder:text-gray-400 focus:outline-none focus:border-blue-500"
       />
       {errors?.questions?.[activeQuestionIndex]?.text?.message && (
         <p className="text-red-500 text-sm mt-1">
@@ -64,13 +64,13 @@ function BulkAnswers({ activeQuestionIndex }: { activeQuestionIndex: number }) {
         </p>
       )}
       {/* Body Section Header */}
-      <div className="flex items-center justify-between mb-4 bg-gray-200  mt-6">
-        <span className="ms-13">Body</span>
+      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 bg-gray-200  mt-6">
+        <span className="ms-13 max-sm:ms-3">Body</span>
         <button
           type="button"
           onClick={() => setIsAdding(true)}
           disabled={isAdding || fields.length >= MAX_ANSWERS}
-          className={`flex items-center ms-auto gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-mono font-medium px-4 py-2.5 transition-colors cursor-pointer ${
+          className={`flex items-center ms-auto min-w-0 gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-mono font-medium px-4 py-2.5 transition-colors cursor-pointer ${
             isAdding || fields.length >= MAX_ANSWERS ? "invisible" : "visible"
           }`}
         >
@@ -84,24 +84,24 @@ function BulkAnswers({ activeQuestionIndex }: { activeQuestionIndex: number }) {
         {fields.map((field, index) => (
           <li
             key={field.id}
-            className="flex items-center gap-3  border-b border-gray-100 hover:bg-gray-50 transition-colors"
+            className="flex flex-wrap items-center gap-2 sm:gap-3 py-1 border-b border-gray-100 hover:bg-gray-50 transition-colors"
           >
             <button
               type="button"
               onClick={() => remove(index)}
-              className="flex items-center justify-center  w-12.5 h-12.5 text-red-500 bg-red-50 cursor-pointer"
+              className="flex items-center justify-center shrink-0 w-12.5 h-12.5 text-red-500 bg-red-50 cursor-pointer"
             >
               <Trash2 size={18} />
             </button>
 
-            <span className="flex-1 text-sm font-mono text-gray-800">
+            <span className="flex-1 min-w-0 break-words text-sm font-mono text-gray-800">
               {field.text}
             </span>
 
             <button
               type="button"
               onClick={() => toggleCorrect(index)}
-              className={`flex items-center justify-center gap-1.5 w-32 h-8 font-mono text-[12px] me-2 cursor-pointer ${
+              className={`flex items-center justify-center gap-1.5 w-32 h-8 shrink-0 font-mono text-[12px] max-sm:ms-auto sm:me-2 cursor-pointer ${
                 answers[index]?.isCorrect
                   ? "text-emerald-500"
                   : "bg-gray-200 text-gray-800"
@@ -122,11 +122,11 @@ function BulkAnswers({ activeQuestionIndex }: { activeQuestionIndex: number }) {
 
         {/* Input Row */}
         {isAdding && (
-          <div className="flex items-center gap-4 px-2 py-3 bg-emerald-50 border-t border-gray-100">
+          <div className="flex flex-wrap items-center gap-3 px-2 py-3 bg-emerald-50 border-t border-gray-100">
             <button
               type="button"
               onClick={() => setIsAdding(false)}
-              className="flex items-center justify-center w-7.5 h-7.5 ms-1 border border-gray-300 text-gray-600 rounded-full hover:bg-gray-200 cursor-pointer"
+              className="flex items-center justify-center shrink-0 w-7.5 h-7.5 ms-1 border border-gray-300 text-gray-600 rounded-full hover:bg-gray-200 cursor-pointer"
             >
               <X size={14} />
             </button>
@@ -139,12 +139,12 @@ function BulkAnswers({ activeQuestionIndex }: { activeQuestionIndex: number }) {
               value={newAnswerText}
               onChange={(e) => setNewAnswerText(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleConfirmAdd()}
-              className="flex-1 border border-emerald-300 focus:border-emerald-400 focus:outline-none px-3 py-2 text-xs font-mono text-gray-700 placeholder:text-gray-400 bg-white transition-colors"
+              className="flex-1 min-w-28 border border-emerald-300 focus:border-emerald-400 focus:outline-none px-3 py-2 text-xs font-mono text-gray-700 placeholder:text-gray-400 bg-white transition-colors"
             />
             <button
               type="button"
               onClick={() => handleConfirmAdd()}
-              className="flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-mono font-medium px-8 py-2 transition-colors cursor-pointer"
+              className="flex items-center shrink-0 gap-1.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-mono font-medium px-8 py-2 transition-colors cursor-pointer"
             >
               <Plus size={16} />
               Add

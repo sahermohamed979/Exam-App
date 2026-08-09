@@ -27,7 +27,6 @@ export const authOptions: NextAuthOptions = {
           throw new Error(data.message);
         }
 
-        console.log(data.payload.token);
         return {
           id: data.payload.user.id,
           user: data.payload.user,

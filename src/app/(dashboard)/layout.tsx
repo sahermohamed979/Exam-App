@@ -27,7 +27,7 @@ export default async function layout({
         } as React.CSSProperties
       }
     >
-      <SidebarTrigger className="fixed right-3 top-2 z-50" size="lg" />
+      <SidebarTrigger className="absolute right-3 top-2 z-50" size="lg" />
 
       {children}
 

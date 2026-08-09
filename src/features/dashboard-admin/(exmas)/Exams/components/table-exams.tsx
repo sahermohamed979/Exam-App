@@ -23,6 +23,39 @@ import Link from "next/link";
 import { IExam } from "../types/exams";
 import DeletExam from "./delet-exam";
 
+function ExamActions({ exam }: { exam: IExam }) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button className="p-2 bg-[#e2e8f0] hover:bg-[#cbd5e1] text-[#475569] rounded transition-colors inline-flex items-center justify-center">
+          <Ellipsis size={18} />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-32">
+        <DropdownMenuItem className=" cursor-pointer">
+          <Link
+            href={`/exams/${exam.id}?exam=${encodeURIComponent(exam.title)}`}
+            className="flex items-center gap-2"
+          >
+            <Eye size={18} />
+            <span>View</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
+          <Link
+            href={`/exams/${exam.id}/edit?exam=${encodeURIComponent(exam.title)}`}
+            className="flex items-center gap-2"
+          >
+            <Pencil size={18} />
+            <span>Edit</span>
+          </Link>
+        </DropdownMenuItem>
+        <DeletExam id={exam.id} />
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 export function TableExams({
   currentExams,
   onSort,
@@ -31,7 +64,9 @@ export function TableExams({
   onSort?: (sortBy: string, sortOrder: string) => void;
 }) {
   return (
-    <Table className="w-full border-collapse">
+    <>
+      <div className="hidden md:block w-full max-w-full min-w-0">
+        <Table className="w-full border-collapse">
       <TableHeader className="bg-blue-600">
         <TableRow className="hover:bg-transparent border-none">
           <TableHead className="text-white font-medium py-2 px-4">
@@ -128,38 +163,57 @@ export function TableExams({
             </TableCell>
 
             <TableCell className="text-right px-4">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <button className="p-2 bg-[#e2e8f0] hover:bg-[#cbd5e1] text-[#475569] rounded transition-colors inline-flex items-center justify-center">
-                    <Ellipsis size={18} />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-32">
-                  <DropdownMenuItem className=" cursor-pointer">
-                    <Link
-                      href={`/exams/${exam.id}?exam=${encodeURIComponent(exam.title)}`}
-                      className="flex items-center gap-2"
-                    >
-                      <Eye size={18} />
-                      <span>View</span>
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="flex items-center gap-2 cursor-pointer">
-                    <Link
-                      href={`/exams/${exam.id}/edit?exam=${encodeURIComponent(exam.title)}`}
-                      className="flex items-center gap-2"
-                    >
-                      <Pencil size={18} />
-                      <span>Edit</span>
-                    </Link>
-                  </DropdownMenuItem>
-                  <DeletExam id={exam.id} />
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <ExamActions exam={exam} />
             </TableCell>
           </TableRow>
         ))}
       </TableBody>
-    </Table>
+        </Table>
+      </div>
+
+      <div className="md:hidden flex w-full min-w-0 flex-col gap-4">
+        {currentExams.map((exam) => (
+          <div
+            key={exam.id}
+            className="bg-white border border-gray-100 rounded-md p-4 w-full min-w-0"
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div className="relative w-16 h-16 shrink-0 overflow-hidden border border-gray-100">
+                <Image
+                  src={exam.image || ""}
+                  alt={exam.title}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <ExamActions exam={exam} />
+            </div>
+
+            <div className="mt-3 min-w-0">
+              <p className="text-sm font-medium text-slate-400">Title</p>
+              <p className="font-mono text-[#334155] text-sm font-medium break-words min-w-0">
+                {exam.title}
+              </p>
+            </div>
+
+            <div className="mt-3 min-w-0">
+              <p className="text-sm font-medium text-slate-400">Description</p>
+              <p className="font-mono text-gray-500 text-sm leading-relaxed break-words min-w-0">
+                {exam.description}
+              </p>
+            </div>
+
+            <div className="mt-3 min-w-0">
+              <p className="text-sm font-medium text-slate-400">
+                No. of Questions
+              </p>
+              <p className="font-mono text-gray-500 text-sm min-w-0">
+                {exam.questionsCount}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
