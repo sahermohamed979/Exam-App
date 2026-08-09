@@ -1,5 +1,8 @@
 import { authOptions } from "@/src/auth";
-import { SidebarProvider } from "@/src/shared/components/ui/sidebar";
+import {
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/src/shared/components/ui/sidebar";
 import { getServerSession } from "next-auth";
 
 interface DashboardLayoutProps {
@@ -12,10 +15,9 @@ export default async function layout({
   admin,
   user,
 }: Readonly<DashboardLayoutProps>) {
-  
   const session = await getServerSession(authOptions);
   const role = session?.user.role;
-  
+
   return (
     <SidebarProvider
       style={
@@ -25,10 +27,11 @@ export default async function layout({
         } as React.CSSProperties
       }
     >
+      <SidebarTrigger className="fixed right-3 top-2 z-50" size="lg" />
+
       {children}
 
-
-      {role === "ADMIN" ? admin :   user}
+      {role === "ADMIN" ? admin : user}
     </SidebarProvider>
   );
 }

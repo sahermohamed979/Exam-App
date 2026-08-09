@@ -7,7 +7,7 @@ export default function HeaderUserDashboard({ title }: { title: string  }) {
   const formattedTitle = formatSlugName(title );
   return (
     <>
-      <header className="mb-3 text-gray-400">
+      <header className="mb-3 text-gray-400 sm:text-sm md:text-base lg:text-lg xl:text-xl">
         Diplomas/
         <span className="text-blue-600"> {formattedTitle}</span>
       </header>
