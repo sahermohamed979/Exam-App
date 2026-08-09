@@ -1,4 +1,8 @@
-import { ApiResponse, IPaginationResponse } from "../../../../shared/types/api";
+import {
+  ApiResponse,
+  ErrorResponse,
+  IPaginationResponse,
+} from "../../../../shared/types/api";
 import { NextRequest } from "next/server";
 import { getToken } from "next-auth/jwt";
 import { RESPONSES } from "@/src/shared/constants/response.constant";
@@ -128,6 +132,6 @@ export async function getUser() {
 
     return data.payload;
   } catch (error) {
-    return error;
+    return error as ErrorResponse;
   }
 }
