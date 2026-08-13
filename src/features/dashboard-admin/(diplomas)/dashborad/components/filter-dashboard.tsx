@@ -14,6 +14,7 @@ import {
   CollapsibleTrigger,
 } from "@/src/shared/components/ui/collapsible";
 import { DEFAULT_FILTERS } from "@/src/shared/constants/api.constants";
+import { Button } from "@/src/shared/components/ui/button";
 
 export function FilterDashboard({
   onFilter,
@@ -42,7 +43,7 @@ export function FilterDashboard({
       onOpenChange={setIsOpen}
       className="flex w-full flex-col gap-2   mb-4 transition-all bg-blue-600 "
     >
-      <div className="flex items-center justify-between gap-4 px-4  py-2 ">
+      <div className="flex items-center justify-between gap-4 px-4  py-1 ">
         <h4 className="text-sm font-semibold flex items-center gap-2 text-white">
           <SlidersHorizontal size={20} />
           <span className="text-[16px] font-inter font-semibold">
@@ -50,7 +51,7 @@ export function FilterDashboard({
           </span>
         </h4>
         <CollapsibleTrigger asChild>
-          <button className="flex items-center justify-center gap-1 text-white">
+          <Button className="flex items-center justify-center gap-1 text-white bg-transparent hover:bg-transparent p-0">
             {isOpen ? (
               <ChevronsDownUp className="rotate-180" size={18} />
             ) : (
@@ -59,7 +60,7 @@ export function FilterDashboard({
             <span className="text-sm font-semibold">
               {isOpen ? "Hide" : "Show"}
             </span>
-          </button>
+          </Button>
         </CollapsibleTrigger>
       </div>
 
